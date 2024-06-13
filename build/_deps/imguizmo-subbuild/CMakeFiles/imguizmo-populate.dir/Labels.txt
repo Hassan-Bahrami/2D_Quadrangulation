@@ -1,0 +1,14 @@
+# Target labels
+ imguizmo-populate
+# Source files and their labels
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/imguizmo-subbuild/CMakeFiles/imguizmo-populate
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/imguizmo-subbuild/CMakeFiles/imguizmo-populate.rule
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/imguizmo-subbuild/CMakeFiles/imguizmo-populate-complete.rule
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/imguizmo-subbuild/imguizmo-populate-prefix/src/imguizmo-populate-stamp/imguizmo-populate-build.rule
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/imguizmo-subbuild/imguizmo-populate-prefix/src/imguizmo-populate-stamp/imguizmo-populate-configure.rule
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/imguizmo-subbuild/imguizmo-populate-prefix/src/imguizmo-populate-stamp/imguizmo-populate-download.rule
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/imguizmo-subbuild/imguizmo-populate-prefix/src/imguizmo-populate-stamp/imguizmo-populate-install.rule
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/imguizmo-subbuild/imguizmo-populate-prefix/src/imguizmo-populate-stamp/imguizmo-populate-mkdir.rule
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/imguizmo-subbuild/imguizmo-populate-prefix/src/imguizmo-populate-stamp/imguizmo-populate-patch.rule
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/imguizmo-subbuild/imguizmo-populate-prefix/src/imguizmo-populate-stamp/imguizmo-populate-test.rule
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/imguizmo-subbuild/imguizmo-populate-prefix/src/imguizmo-populate-stamp/imguizmo-populate-update.rule

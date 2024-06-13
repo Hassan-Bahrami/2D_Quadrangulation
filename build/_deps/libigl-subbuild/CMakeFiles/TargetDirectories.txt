@@ -1,0 +1,3 @@
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/libigl-subbuild/CMakeFiles/libigl-populate.dir
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/libigl-subbuild/CMakeFiles/edit_cache.dir
+/home/hassan/Projects/ISTA/2D_Quadrangulation/build/_deps/libigl-subbuild/CMakeFiles/rebuild_cache.dir

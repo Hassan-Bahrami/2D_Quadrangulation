@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/2D_Quadrangulation.dir/src/main.cpp.o -o 2D_Quadrangulation  /usr/lib/x86_64-linux-gnu/libOpenGL.so lib/libimguizmo.a lib/libimgui.a lib/libglfw3.a /usr/lib/x86_64-linux-gnu/librt.a -lm lib/libglad.a -ldl 
