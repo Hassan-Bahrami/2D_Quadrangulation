@@ -35,5 +35,5 @@ You should see a glfw window open and show a 2D plane. Then, you can fit the qua
 Here is a preview of the project:
 
 
-![Preview](
+![Preview](./models/Preview.gif)
 
