@@ -730,17 +730,6 @@ int main(int argc, char* argv[]) {
     gridColors.setZero();
     gridColors.col(1).array() = 1.0; // Set green channel to 1
 
-    // // Define the index of the selected point (replace with your desired index)
-    // int selectedPointIndex = 40; // Replace with the index of the point you want to select
-    // // Highlight the selected point in red
-    // gridColors.row(selectedPointIndex) << 1.0, 0.0, 0.0; // Red color
-    // // Get the neighbors of the selected point (replace with your logic)
-    // const std::vector<int>& neighbors = grid3D_with_Neighbours[selectedPointIndex].neighbors;
-    // // Highlight the neighbors in blue
-    // for (int neighbor : neighbors) {
-    //     gridColors.row(neighbor) << 0.0, 0.0, 1.0; // Blue color
-    // }
-
     // Derive quads from grid points
     std::vector<Quad> F_Quads = DeriveQuadsFromGrid(minPoint, maxPoint, cellSize, grid3D_with_Neighbours);
 
@@ -772,109 +761,6 @@ int main(int argc, char* argv[]) {
     // Derive quad edges to be able to plot them
     QuadEdges FitQuadEdges = create_quadEdges(F_FitQuads, grid3D_with_Neighbours);
 
-    // // *** Check barycentric coordinates in 3D *** //
-    // // Initialize a vector to store barycentric coordinates of filtered quads
-    // std::vector<Eigen::RowVector3d> barycentric_quads;
-    // // Create a set to keep track of processed vertex indices
-    // std::set<int> processedVertices;
-    // // Compute barycentric coordinates for each filtered quad
-    // for (const Quad& quad : F_FitQuads) {
-    //     for (int i = 0; i < 4; ++i) {
-    //         int vertexIndex = quad.vertices[i];
-    //         if (processedVertices.find(vertexIndex) == processedVertices.end()) {
-    //             Point point = grid3D_with_Neighbours[vertexIndex];
-    //             QuadsBarycentricCoords(point, triangles);
-    //             processedVertices.insert(vertexIndex);
-    //         }
-    //     }
-    // }
-    // // Assign random values to the zero axis of V to create a double curvature 3D mesh.
-    // Eigen::MatrixXd V_3D_Mat = GenerateRandomZeroAxis(V, zeroAxis);
-    // // update the trianlge values using new V_3D_Mat
-    // updateTriangles(triangles, V_3D_Mat, F);
-    // // Convert V_FitMatQuad to std::vector<Point>
-    // std::vector<Point> V_3D = EigenMatToVector(V_3D_Mat);
-
-    // // Define a vector to store the positions of quad points in 3D
-    // std::vector<Point> V_quad3D;
-    // // Create a set to keep track of processed vertex indices
-    // std::set<int> processedVertices2;
-    // // Loop over all quads and compute barycentric coordinates
-    // for (const Quad& quad : F_FitQuads) {
-    //     for (int i = 0; i < 4; ++i) {
-    //         int vertexIndex = quad.vertices[i];
-
-    //         // Check if the vertex index has already been processed
-    //         if (processedVertices2.find(vertexIndex) == processedVertices2.end()) {
-    //             Point point = grid3D_with_Neighbours[vertexIndex];
-    //             const int triangleIndex = point.triangleIdx;
-
-    //             // Check if triangleIndex is valid
-    //             if (triangleIndex < 0 || triangleIndex >= triangles.size()) {
-    //                 std::cerr << "Invalid triangle index: " << triangleIndex << std::endl;
-    //                 continue;
-    //             }
-
-    //             const Triangle& triangle = triangles[triangleIndex];  // Access triangles directly
-
-    //             // Print debug information
-    //             std::cout << "Processing Point Index: " << point.index << std::endl;
-    //             std::cout << "Triangle Index: " << triangleIndex << std::endl;
-    //             std::cout << "Triangle vertices: " << triangle.v1 << ", " << triangle.v2 << ", " << triangle.v3 << std::endl;
-
-    //             // Check vector lengths
-    //             Eigen::RowVector3d v0 = triangle.v2 - triangle.v1;
-    //             Eigen::RowVector3d v1 = triangle.v3 - triangle.v1;
-    //             Eigen::RowVector3d v2 = point.position - triangle.v1;
-
-    //             if (v0.norm() < 1e-10 || v1.norm() < 1e-10 || v2.norm() < 1e-10) {
-    //                 std::cerr << "Zero length vector detected." << std::endl;
-    //                 continue;
-    //             }
-
-    //             // Compute barycentric coordinates
-    //             BaryCentricCoord(point, triangle);
-
-    //             // Reconstruct the 3D position using barycentric coordinates
-    //             Eigen::RowVector3d reconstructed = point.baryCoord.x() * triangle.v1 +
-    //                                             point.baryCoord.y() * triangle.v2 +
-    //                                             point.baryCoord.z() * triangle.v3;
-
-    //             // Check if reconstructed coordinates match actual coordinates
-    //             if (!reconstructed.isApprox(point.position, 1e-6)) {
-    //                 std::cout << "!!! Wrong reconstructed coordinate - Point index: " << point.index << " has different reconstructed and actual coordinates." << std::endl;
-    //             }
-
-    //             // Create a Point structure and store the computed 3D position
-    //             Point quadPoint;
-    //             quadPoint.position = reconstructed;
-    //             V_quad3D.push_back(quadPoint);
-
-    //             processedVertices2.insert(vertexIndex);
-    //         } 
-    //     }
-    // }
-
-
-    // std::cout << "V_quad3D: " << V_quad3D.size() << std::endl;
-    // std::cout << "F_FitQuads: " << F_FitQuads.size() << std::endl;
-    // // // Derive quad edges in 3D to be able to plot them
-    // QuadEdges Quad3DEdges = create_quadEdges(F_FitQuads, V_quad3D);
-
-
-    // int negativeBary = countPointsWithNegativeBarycentric(barycentric_quads);
-    // std::cout << "Negative bary points: " << negativeBary << std::endl;
-    // std::cout << "barycentric_quads: " << barycentric_quads.size() << std::endl;
-    // std::cout << "V_quads_Mat: " << V_Quad_Mat.rows() << std::endl;
-    // std::cout << "F_Quad_Mat: " << F_Quad_Mat.rows() << std::endl;
-    // std::cout << "Grid points: " << grid3D_with_Neighbours.size() << std::endl;
-    // std::cout << "V_FitQuads: " << V_FitQuad.size() << std::endl;
-    // std::cout << "F_FitQuads: " << F_FitQuads.size() << std::endl;
-    // std::cout << "V_FitQuads_Mat: " << V_FitQuad_Mat.rows() << std::endl;
-    // std::cout << "F_FitQuad_Mat: " << F_FitQuad_Mat.rows() << std::endl;
-    // std::cout << "V_3D_Mat: " << V_3D_Mat.rows() << std::endl;
-
-    // // *** End of checking barycentric coordinates *** //
 
     for (size_t i=0; i<grid3D_with_Neighbours.size(); i++)
     {
@@ -989,83 +875,18 @@ int main(int argc, char* argv[]) {
             }
 
 
-            // if (ImGui::Checkbox("3D quads contains whole mesh", &Show3DQuadEdges))
-            // {
-            //     viewer.data().add_edges(Quad3DEdges.P1, Quad3DEdges.P2, Eigen::RowVector3d(0.0, 0.0, 1.0));
-            // }
-
-            // if (ImGui::Checkbox("Add 3D mesh", &Show3DMesh))
-            // {
-            //     viewer.data().set_mesh(V_3D_Mat, F);
-            // }
-
             if (ImGui::Button("Clear scene"))
             {
                 viewer.data().clear();
             }
 
-
-            // // Compute the coordinates of each filtered quad using their barycentric coordinates
-            // const Quad& quad = F_FitQuads[50];
-            // Eigen::RowVector3d quadPoint3D;
-            // int vertexIdx1 = quad.vertices[2];
-            // Point point1 = grid3D_with_Neighbours[vertexIdx1];
-            // const int triangleIndex = point1.triangleIdx;
-            // const Triangle& triangle = triangles[triangleIndex];  // Access triangles directly
-            // Eigen::RowVector3d baryCoords = computeBarycentricCoordinates(point1, triangle);
-            // Interpolate the 3D position using barycentric coordinates
-            // Eigen::RowVector3d quadPoint3D_point1 = baryCoords(0) * triangle.v1 +
-            //                                         baryCoords(1) * triangle.v2 +
-            //                                         baryCoords(2) * triangle.v3;
-
-            // BaryCentricCoord(point1, triangle);
-            //  Eigen::RowVector3d recontructed = point1.baryCoord.x() * triangle.v1 +
-            //                                          point1.baryCoord.y() * triangle.v2 +
-            //                                          point1.baryCoord.z() * triangle.v3;
-            // std::cout << "Barycentric Coordinate: " << point1.baryCoord << std::endl;
-            // std::cout << "Actual Coordinate: " << point1.position << std::endl;
-            // std::cout << "Reconstructed Coordinate: " << recontructed << std::endl;
-            // Eigen::MatrixXd point1_bary = Eigen::MatrixXd::Zero(1, 3);
-            // point1_bary.row(0) = recontructed;
-            // Eigen::MatrixXd point1_act = Eigen::MatrixXd::Zero(1, 3);
-            // point1_act.row(0) = point1.position;
-            // int vertex2 = quad.vertices[1];
-            // int vertex3 = quad.vertices[2];
-            // int vertex4 = quad.vertices[3];
-
-
-        //     if (ImGui::Checkbox("Vertex 1 bary", &Vert1_bary))
-        //     {   
-        //         viewer.data().add_points(point1_bary, Eigen::RowVector3d(1.0, 0.0, 0.0));
-        //     }
-
-        //     if (ImGui::Checkbox("Vertex 1 actual", &Vert1_act))
-        //     {
-        //         viewer.data().add_points(point1_act, Eigen::RowVector3d(0.0, 1.0, 0.0));
-        //     }
-
-        //     if (ImGui::Checkbox("Show Triangle", &ShowTriangle))
-        //     {
-        //         viewer.data().add_points(triangle.v1, Eigen::RowVector3d(0.0, 0.0, 1.0));
-        //         viewer.data().add_points(triangle.v2, Eigen::RowVector3d(0.0, 0.0, 1.0));
-        //         viewer.data().add_points(triangle.v3, Eigen::RowVector3d(0.0, 0.0, 1.0));
-        //     }            
-
         }
     };
-
-    // *** visulaize mapped original mesh and fit quad mesh in 3D *** //
     // Add 3D original mesh to the scene
     viewer.data().set_mesh(V, F);
-
-
-    // // Add 3D quad edges to the scene
-    // viewer.data().add_edges(Quad3DEdges.P1, Quad3DEdges.P2, Eigen::RowVector3d(1.0, 0.0, 0.0));
-
-    // Customize the viewer as needed
-    // viewer.data().set_mesh(V, F);
     // Launch the viewer
     viewer.launch();
 
     return 0;
+
 };
