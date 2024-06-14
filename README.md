@@ -1,6 +1,6 @@
 # 2D Quadrangulation
 This is a C++ project to fit a Quad grid on a 2D mesh.
-The fitted grid is either can be completely covered by the mesh (inside of the mesh) or completely can covere the 2D mesh (The border quads have overlaps with the outside as well).
+The fitted grid can either completely cover the mesh (inside) or extend beyond it (border quads overlap with the outside).
 
 ## Dependencies
 The code relies on:
@@ -11,7 +11,7 @@ The code relies on:
 All of them are already included in the label. So, you can simply use "libigl".
 
 ## How to use
-To use the code, you need to use the following commands from the root directory of the project:
+To build and run the project, follow these steps from the root directory:
 
 ```bash
 mkdir build
@@ -19,20 +19,20 @@ cd build
 cmake ..
 make
 ```
-After building the project, go to the build directory and run:
+After building the project, navigate to the build directory and execute:
 
 ```bash
 2D_Quadrangulation <path to the 2D mesh>
 ```
 
 ## Usage example
-After building the project, go to the build directory and run:
+Once built, navigate to the build directory and run:
 
 ```bash
 2D_Quadrangulation ../models/curvedPlane.obj
 ```
-You should see a glfw window open and show a 2D plane. Then, you can fit the quad grids on it using the "Quadrangulation" section of the GUI.
-Here is a preview of the project:
+This will open a glfw window displaying a 2D plane. You can fit quad grids onto it using the "Quadrangulation" section of the GUI.
+Here is a preview of the project in action:
 
 
 ![Preview](./models/Preview.gif)
